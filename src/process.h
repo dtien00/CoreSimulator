@@ -9,11 +9,16 @@ extern enum processState{
     TERMINATED
 }; /* We do not need a COMPLETED state, as once the process is done we can simply DISCARD it */
 
-extern struct Process{
+#ifndef PROCESS
+#define PROCESS
+
+typedef struct{
     char msg[MAX_LEN]; /* A message that the process will print when it is run; this is just to simulate some work being done by the process */
     enum processState state; /* The current state of the process */
     int id; /* A positive integer value that can be used as an ID for the process */
-};
+} Process;
+
+#endif // PROCESS
 
 int initialize_msg(char str[], int ctr){
     /* This will initiailize our message with the provided string to print */
@@ -44,7 +49,7 @@ int initialize_msg(char str[], int ctr){
 
 }
 
-void set_state(struct Process p, enum processState new_state){
+void set_state(Process p, enum processState new_state){
     /* This will set the state of the process to the new state provided */
     /* @param new_state: The new state we wish to set the process to */
 
