@@ -9,8 +9,6 @@ typedef struct {
     int id;
 } Scheduler;
 
-#endif SCHEDULER
-
 int addProcess(Scheduler sch, Process p){
     /* Looks to add some process p to the Schedule object list */
     /* @param p: The Process object to add to the list */
@@ -21,7 +19,7 @@ int addProcess(Scheduler sch, Process p){
     */
 
     for(int i; i<MAX_PROCESSES; i++){
-        if (sch.list[i].id == NULL) {
+        if (sch.list[i].id == -1) {
             sch.list[i] = p;
             return 1;
         }
@@ -39,7 +37,7 @@ int removeProcess(Scheduler sch, int id){
     */
 
     Process empty;
-    empty.id = NULL;
+    empty.id = -1;
 
     for(int i = 0; i<MAX_PROCESSES; i++){
         if(sch.list[i].id == id){
@@ -67,3 +65,5 @@ int runProcess(Scheduler sch, int id){
     }
     return 0;
 }
+
+#endif

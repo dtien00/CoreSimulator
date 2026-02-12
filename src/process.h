@@ -1,24 +1,23 @@
 /* The structure for a process we wish to run */
 
+#ifndef PROCESS
+#define PROCESS
+
 #define MAX_LEN 255 /* Maximum message length for a process message */
 
-extern enum processState{
+enum processStates{
     READY = 1,
     RUNNING,
     SUSPENDED,
     TERMINATED
 }; /* We do not need a COMPLETED state, as once the process is done we can simply DISCARD it */
 
-#ifndef PROCESS
-#define PROCESS
 
 typedef struct{
     char msg[MAX_LEN]; /* A message that the process will print when it is run; this is just to simulate some work being done by the process */
-    enum processState state; /* The current state of the process */
+    int state; /* The current state of the process */
     int id; /* A positive integer value that can be used as an ID for the process */
 } Process;
-
-#endif // PROCESS
 
 int initialize_msg(char str[], int ctr){
     /* This will initiailize our message with the provided string to print */
@@ -49,9 +48,12 @@ int initialize_msg(char str[], int ctr){
 
 }
 
-void set_state(Process p, enum processState new_state){
+void set_state(Process p, int processState){
     /* This will set the state of the process to the new state provided */
     /* @param new_state: The new state we wish to set the process to */
 
-    p.state = new_state;
+    p.state = processState;
 }
+
+
+#endif

@@ -7,7 +7,6 @@ typedef struct {
     int id; // Core ID
 } Core;
 
-#endif CORE
 
 void runScheduler(int protocol){
     /* Based on the protocol parameter value, runs a specific scheduler behavior */
@@ -19,3 +18,5 @@ void runScheduler(int protocol){
 
     
 }
+
+#endif
